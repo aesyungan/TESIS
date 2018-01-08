@@ -53,18 +53,18 @@
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel5 = new MetroFramework.Controls.MetroLabel();
             this.lbUserName = new MetroFramework.Controls.MetroLabel();
-            this.ProgresSpinnerLoad = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBoxHeader = new System.Windows.Forms.PictureBox();
             this.lNArchivosBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.ProgresSpinnerLoad = new System.Windows.Forms.PictureBox();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewArchivos)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ProgresSpinnerLoad)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxHeader)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lNArchivosBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ProgresSpinnerLoad)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -298,17 +298,6 @@
             this.lbUserName.TabIndex = 11;
             this.lbUserName.Text = "Usuario Logeado";
             // 
-            // ProgresSpinnerLoad
-            // 
-            this.ProgresSpinnerLoad.BackColor = System.Drawing.Color.Transparent;
-            this.ProgresSpinnerLoad.Image = global::TESIS.Properties.Resources.loading3;
-            this.ProgresSpinnerLoad.Location = new System.Drawing.Point(387, 172);
-            this.ProgresSpinnerLoad.Name = "ProgresSpinnerLoad";
-            this.ProgresSpinnerLoad.Size = new System.Drawing.Size(100, 95);
-            this.ProgresSpinnerLoad.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.ProgresSpinnerLoad.TabIndex = 12;
-            this.ProgresSpinnerLoad.TabStop = false;
-            // 
             // pictureBox1
             // 
             this.pictureBox1.BackColor = System.Drawing.SystemColors.Info;
@@ -335,6 +324,17 @@
             // 
             this.lNArchivosBindingSource.DataSource = typeof(LN.LNArchivos);
             // 
+            // ProgresSpinnerLoad
+            // 
+            this.ProgresSpinnerLoad.BackColor = System.Drawing.Color.Transparent;
+            this.ProgresSpinnerLoad.Image = global::TESIS.Properties.Resources.loading3;
+            this.ProgresSpinnerLoad.Location = new System.Drawing.Point(387, 172);
+            this.ProgresSpinnerLoad.Name = "ProgresSpinnerLoad";
+            this.ProgresSpinnerLoad.Size = new System.Drawing.Size(100, 95);
+            this.ProgresSpinnerLoad.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.ProgresSpinnerLoad.TabIndex = 12;
+            this.ProgresSpinnerLoad.TabStop = false;
+            // 
             // FormHome
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -359,10 +359,10 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ProgresSpinnerLoad)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxHeader)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lNArchivosBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ProgresSpinnerLoad)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

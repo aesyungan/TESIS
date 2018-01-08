@@ -172,24 +172,36 @@ namespace TESIS
         private void archivoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             OpenFileDialog openFile = new OpenFileDialog();
+            showSpinner(true);
             if (openFile.ShowDialog() == DialogResult.OK)
             {//directorio del archivo a enviar
-                pathFileSend = openFile.FileName;
-                showSpinner(true);
-                ////dataBase
-                //archivoInsert.fecha= DateTime.Now.ToString("M/d/yyyy");
-                //archivoInsert.nombre = openFile.SafeFileName;
-                //archivoInsert.ubicacion = openFile.FileName;
-                //archivoInsert.usuarios.id = usuario.id;
-                //LNArchivos.Instance.Insertar(archivoInsert);
+                
+                string nombreFile = CopyFile(openFile.FileName, openFile.SafeFileName);
+                Console.WriteLine(nombreFile);
+                SocketApp socketApp = new SocketApp("127.0.0.1", 5656,usuario);
+                //para q actualize cuando envie todo
+                socketApp.dataGridViewArchivos = dataGridViewArchivos;
+                socketApp.progresSpinnerLoad = ProgresSpinnerLoad;
+                socketApp.InitSocketEnviar(nombreFile, usuario.id);
+                //InitSocket(nombreFile);
 
-
-                //codigo para enviar por socket aqui
-
-
-                CargarDatos(usuario);
+                // CargarDatos(usuario);
+                // showSpinner(false);
+            }
+            else
+            {
                 showSpinner(false);
             }
+        }
+        public string CopyFile(string pathOrigen, string nombreFile)
+        {
+            string pathProyect = Directory.GetCurrentDirectory();
+            long milliseconds = DateTimeOffset.Now.ToUnixTimeMilliseconds();
+            nombreFile = milliseconds.ToString() + nombreFile;
+            //Console.WriteLine(milliseconds.ToString());
+            pathProyect = pathProyect + "\\envios\\planos-medianos\\" + nombreFile;
+            File.Copy(@"" + pathOrigen, @"" + pathProyect);
+            return nombreFile;
         }
 
     }
