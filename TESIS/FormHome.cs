@@ -166,7 +166,27 @@ namespace TESIS
 
         private void btnCambiar_Click(object sender, EventArgs e)
         {
-            showSpinner(false);
+            OpenFileDialog openFile = new OpenFileDialog();
+            showSpinner(true);
+            if (openFile.ShowDialog() == DialogResult.OK)
+            {//directorio del archivo a enviar
+
+                string nombreFile = CopyFile(openFile.FileName, openFile.SafeFileName);
+                Console.WriteLine(nombreFile);
+                SocketApp socketApp = new SocketApp("127.0.0.1", 5656, usuario);
+                //para q actualize cuando envie todo
+                socketApp.dataGridViewArchivos = dataGridViewArchivos;
+                socketApp.progresSpinnerLoad = ProgresSpinnerLoad;
+                socketApp.UpdateArchivo(nombreFile, archivoSelected.id);
+                //InitSocket(nombreFile);
+
+                // CargarDatos(usuario);
+                // showSpinner(false);
+            }
+            else
+            {
+                showSpinner(false);
+            }
         }
         //selecciona el dirrectorio del archivo 
         private void archivoToolStripMenuItem_Click(object sender, EventArgs e)
