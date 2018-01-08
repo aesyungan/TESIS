@@ -30,9 +30,20 @@
         {
             this.components = new System.ComponentModel.Container();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.inicioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cerrarSessiónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.salirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.enviarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.archivoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ayudaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.acercaDeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dataGridViewArchivos = new System.Windows.Forms.DataGridView();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnEliminar = new System.Windows.Forms.Button();
+            this.btnCambiar = new System.Windows.Forms.Button();
+            this.btnDescargar = new System.Windows.Forms.Button();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.lbFecha = new MetroFramework.Controls.MetroLabel();
             this.lbUbicacion = new MetroFramework.Controls.MetroLabel();
             this.lnNombre = new MetroFramework.Controls.MetroLabel();
@@ -43,25 +54,14 @@
             this.metroLabel5 = new MetroFramework.Controls.MetroLabel();
             this.lbUserName = new MetroFramework.Controls.MetroLabel();
             this.ProgresSpinnerLoad = new System.Windows.Forms.PictureBox();
-            this.btnEliminar = new System.Windows.Forms.Button();
-            this.btnCambiar = new System.Windows.Forms.Button();
-            this.btnDescargar = new System.Windows.Forms.Button();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBoxHeader = new System.Windows.Forms.PictureBox();
-            this.inicioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.cerrarSessiónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.salirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.enviarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.archivoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ayudaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.acercaDeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lNArchivosBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewArchivos)).BeginInit();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ProgresSpinnerLoad)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ProgresSpinnerLoad)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxHeader)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lNArchivosBindingSource)).BeginInit();
@@ -77,9 +77,69 @@
             this.ayudaToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 4);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(208, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(300, 24);
             this.menuStrip1.TabIndex = 7;
             this.menuStrip1.Text = "menuStrip1";
+            // 
+            // inicioToolStripMenuItem
+            // 
+            this.inicioToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.cerrarSessiónToolStripMenuItem,
+            this.salirToolStripMenuItem});
+            this.inicioToolStripMenuItem.Image = global::TESIS.Properties.Resources.home;
+            this.inicioToolStripMenuItem.Name = "inicioToolStripMenuItem";
+            this.inicioToolStripMenuItem.Size = new System.Drawing.Size(64, 20);
+            this.inicioToolStripMenuItem.Text = "Inicio";
+            // 
+            // cerrarSessiónToolStripMenuItem
+            // 
+            this.cerrarSessiónToolStripMenuItem.Image = global::TESIS.Properties.Resources.logout;
+            this.cerrarSessiónToolStripMenuItem.Name = "cerrarSessiónToolStripMenuItem";
+            this.cerrarSessiónToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+            this.cerrarSessiónToolStripMenuItem.Text = "Cerrar Sessión";
+            this.cerrarSessiónToolStripMenuItem.Click += new System.EventHandler(this.cerrarSessiónToolStripMenuItem_Click);
+            // 
+            // salirToolStripMenuItem
+            // 
+            this.salirToolStripMenuItem.Image = global::TESIS.Properties.Resources.power;
+            this.salirToolStripMenuItem.Name = "salirToolStripMenuItem";
+            this.salirToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+            this.salirToolStripMenuItem.Text = "Salir";
+            this.salirToolStripMenuItem.Click += new System.EventHandler(this.salirToolStripMenuItem_Click);
+            // 
+            // enviarToolStripMenuItem
+            // 
+            this.enviarToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.archivoToolStripMenuItem});
+            this.enviarToolStripMenuItem.Image = global::TESIS.Properties.Resources.send;
+            this.enviarToolStripMenuItem.Name = "enviarToolStripMenuItem";
+            this.enviarToolStripMenuItem.Size = new System.Drawing.Size(67, 20);
+            this.enviarToolStripMenuItem.Text = "Enviar";
+            // 
+            // archivoToolStripMenuItem
+            // 
+            this.archivoToolStripMenuItem.Image = global::TESIS.Properties.Resources.folder;
+            this.archivoToolStripMenuItem.Name = "archivoToolStripMenuItem";
+            this.archivoToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.archivoToolStripMenuItem.Text = "Archivo";
+            this.archivoToolStripMenuItem.Click += new System.EventHandler(this.archivoToolStripMenuItem_Click);
+            // 
+            // ayudaToolStripMenuItem
+            // 
+            this.ayudaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.acercaDeToolStripMenuItem});
+            this.ayudaToolStripMenuItem.Image = global::TESIS.Properties.Resources.questions_circular_button;
+            this.ayudaToolStripMenuItem.Name = "ayudaToolStripMenuItem";
+            this.ayudaToolStripMenuItem.Size = new System.Drawing.Size(69, 20);
+            this.ayudaToolStripMenuItem.Text = "Ayuda";
+            // 
+            // acercaDeToolStripMenuItem
+            // 
+            this.acercaDeToolStripMenuItem.Image = global::TESIS.Properties.Resources.information;
+            this.acercaDeToolStripMenuItem.Name = "acercaDeToolStripMenuItem";
+            this.acercaDeToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
+            this.acercaDeToolStripMenuItem.Text = "Acerca de..";
+            this.acercaDeToolStripMenuItem.Click += new System.EventHandler(this.acercaDeToolStripMenuItem_Click);
             // 
             // dataGridViewArchivos
             // 
@@ -110,6 +170,46 @@
             this.groupBox1.Size = new System.Drawing.Size(415, 308);
             this.groupBox1.TabIndex = 9;
             this.groupBox1.TabStop = false;
+            // 
+            // btnEliminar
+            // 
+            this.btnEliminar.Image = global::TESIS.Properties.Resources.delete_button;
+            this.btnEliminar.Location = new System.Drawing.Point(289, 253);
+            this.btnEliminar.Name = "btnEliminar";
+            this.btnEliminar.Size = new System.Drawing.Size(75, 34);
+            this.btnEliminar.TabIndex = 13;
+            this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
+            // 
+            // btnCambiar
+            // 
+            this.btnCambiar.Image = global::TESIS.Properties.Resources.folder__1_;
+            this.btnCambiar.Location = new System.Drawing.Point(164, 253);
+            this.btnCambiar.Name = "btnCambiar";
+            this.btnCambiar.Size = new System.Drawing.Size(75, 34);
+            this.btnCambiar.TabIndex = 12;
+            this.btnCambiar.UseVisualStyleBackColor = true;
+            this.btnCambiar.Click += new System.EventHandler(this.btnCambiar_Click);
+            // 
+            // btnDescargar
+            // 
+            this.btnDescargar.Image = global::TESIS.Properties.Resources.download;
+            this.btnDescargar.Location = new System.Drawing.Point(31, 253);
+            this.btnDescargar.Name = "btnDescargar";
+            this.btnDescargar.Size = new System.Drawing.Size(75, 34);
+            this.btnDescargar.TabIndex = 11;
+            this.btnDescargar.UseVisualStyleBackColor = true;
+            this.btnDescargar.Click += new System.EventHandler(this.btnDescargar_Click);
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::TESIS.Properties.Resources.cloud2;
+            this.pictureBox2.Location = new System.Drawing.Point(126, 145);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(126, 95);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 7;
+            this.pictureBox2.TabStop = false;
             // 
             // lbFecha
             // 
@@ -209,46 +309,6 @@
             this.ProgresSpinnerLoad.TabIndex = 12;
             this.ProgresSpinnerLoad.TabStop = false;
             // 
-            // btnEliminar
-            // 
-            this.btnEliminar.Image = global::TESIS.Properties.Resources.delete_button;
-            this.btnEliminar.Location = new System.Drawing.Point(289, 253);
-            this.btnEliminar.Name = "btnEliminar";
-            this.btnEliminar.Size = new System.Drawing.Size(75, 34);
-            this.btnEliminar.TabIndex = 13;
-            this.btnEliminar.UseVisualStyleBackColor = true;
-            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
-            // 
-            // btnCambiar
-            // 
-            this.btnCambiar.Image = global::TESIS.Properties.Resources.folder__1_;
-            this.btnCambiar.Location = new System.Drawing.Point(164, 253);
-            this.btnCambiar.Name = "btnCambiar";
-            this.btnCambiar.Size = new System.Drawing.Size(75, 34);
-            this.btnCambiar.TabIndex = 12;
-            this.btnCambiar.UseVisualStyleBackColor = true;
-            this.btnCambiar.Click += new System.EventHandler(this.btnCambiar_Click);
-            // 
-            // btnDescargar
-            // 
-            this.btnDescargar.Image = global::TESIS.Properties.Resources.download;
-            this.btnDescargar.Location = new System.Drawing.Point(31, 253);
-            this.btnDescargar.Name = "btnDescargar";
-            this.btnDescargar.Size = new System.Drawing.Size(75, 34);
-            this.btnDescargar.TabIndex = 11;
-            this.btnDescargar.UseVisualStyleBackColor = true;
-            this.btnDescargar.Click += new System.EventHandler(this.btnDescargar_Click);
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Image = global::TESIS.Properties.Resources.cloud2;
-            this.pictureBox2.Location = new System.Drawing.Point(126, 145);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(126, 95);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 7;
-            this.pictureBox2.TabStop = false;
-            // 
             // pictureBox1
             // 
             this.pictureBox1.BackColor = System.Drawing.SystemColors.Info;
@@ -270,65 +330,6 @@
             this.pictureBoxHeader.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBoxHeader.TabIndex = 5;
             this.pictureBoxHeader.TabStop = false;
-            // 
-            // inicioToolStripMenuItem
-            // 
-            this.inicioToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.cerrarSessiónToolStripMenuItem,
-            this.salirToolStripMenuItem});
-            this.inicioToolStripMenuItem.Image = global::TESIS.Properties.Resources.home;
-            this.inicioToolStripMenuItem.Name = "inicioToolStripMenuItem";
-            this.inicioToolStripMenuItem.Size = new System.Drawing.Size(64, 20);
-            this.inicioToolStripMenuItem.Text = "Inicio";
-            // 
-            // cerrarSessiónToolStripMenuItem
-            // 
-            this.cerrarSessiónToolStripMenuItem.Image = global::TESIS.Properties.Resources.logout;
-            this.cerrarSessiónToolStripMenuItem.Name = "cerrarSessiónToolStripMenuItem";
-            this.cerrarSessiónToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
-            this.cerrarSessiónToolStripMenuItem.Text = "Cerrar Sessión";
-            this.cerrarSessiónToolStripMenuItem.Click += new System.EventHandler(this.cerrarSessiónToolStripMenuItem_Click);
-            // 
-            // salirToolStripMenuItem
-            // 
-            this.salirToolStripMenuItem.Image = global::TESIS.Properties.Resources.power;
-            this.salirToolStripMenuItem.Name = "salirToolStripMenuItem";
-            this.salirToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
-            this.salirToolStripMenuItem.Text = "Salir";
-            this.salirToolStripMenuItem.Click += new System.EventHandler(this.salirToolStripMenuItem_Click);
-            // 
-            // enviarToolStripMenuItem
-            // 
-            this.enviarToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.archivoToolStripMenuItem});
-            this.enviarToolStripMenuItem.Image = global::TESIS.Properties.Resources.send;
-            this.enviarToolStripMenuItem.Name = "enviarToolStripMenuItem";
-            this.enviarToolStripMenuItem.Size = new System.Drawing.Size(67, 20);
-            this.enviarToolStripMenuItem.Text = "Enviar";
-            // 
-            // archivoToolStripMenuItem
-            // 
-            this.archivoToolStripMenuItem.Image = global::TESIS.Properties.Resources.folder;
-            this.archivoToolStripMenuItem.Name = "archivoToolStripMenuItem";
-            this.archivoToolStripMenuItem.Size = new System.Drawing.Size(115, 22);
-            this.archivoToolStripMenuItem.Text = "Archivo";
-            // 
-            // ayudaToolStripMenuItem
-            // 
-            this.ayudaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.acercaDeToolStripMenuItem});
-            this.ayudaToolStripMenuItem.Image = global::TESIS.Properties.Resources.questions_circular_button;
-            this.ayudaToolStripMenuItem.Name = "ayudaToolStripMenuItem";
-            this.ayudaToolStripMenuItem.Size = new System.Drawing.Size(69, 20);
-            this.ayudaToolStripMenuItem.Text = "Ayuda";
-            // 
-            // acercaDeToolStripMenuItem
-            // 
-            this.acercaDeToolStripMenuItem.Image = global::TESIS.Properties.Resources.information;
-            this.acercaDeToolStripMenuItem.Name = "acercaDeToolStripMenuItem";
-            this.acercaDeToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
-            this.acercaDeToolStripMenuItem.Text = "Acerca de..";
-            this.acercaDeToolStripMenuItem.Click += new System.EventHandler(this.acercaDeToolStripMenuItem_Click);
             // 
             // lNArchivosBindingSource
             // 
@@ -357,8 +358,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewArchivos)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ProgresSpinnerLoad)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ProgresSpinnerLoad)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxHeader)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lNArchivosBindingSource)).EndInit();

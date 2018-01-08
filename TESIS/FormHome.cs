@@ -9,13 +9,18 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using LN;
+using System.IO;
+
 namespace TESIS
 {
     public partial class FormHome : MetroFramework.Forms.MetroForm
     {
         public Usuarios usuario { get; set; }
         public Archivos archivoSelected = new Archivos();
+        public Archivos archivoInsert = new Archivos();
         public bool isSelected;
+        //path de l archivo a enviar 
+        static string pathFileSend = "";
         public FormHome(Usuarios usuarios)
         {
             InitializeComponent();
@@ -29,7 +34,7 @@ namespace TESIS
             lbUserName.Text = usuario.nombre;
             //spinner
             showSpinner(false);
-        
+
         }
 
 
@@ -46,9 +51,10 @@ namespace TESIS
             // dataGridViewArchivos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
             dataGridViewArchivos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;//100% content
         }
-        public void showSpinner(bool estado){
+        public void showSpinner(bool estado)
+        {
             ProgresSpinnerLoad.Visible = estado;
-            
+
         }
         private void acercaDeToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -110,11 +116,81 @@ namespace TESIS
         private void btnDescargar_Click(object sender, EventArgs e)
         {
             showSpinner(true);
+            //codigo para q descarge el archo del socket
+
+
+            //  byte[] dataToSend = File.ReadAllBytes(@"" + path);
+            // FileStream fileStream = new FileStream(pathFileSend, FileMode.Create, FileAccess.ReadWrite);
+             Stream myStream ;//del socket
+
+            //dialog para guardar file
+            SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+            string namFile = "data.png";
+            saveFileDialog1.FileName = namFile;
+            saveFileDialog1.Filter = @"All Files|*.txt;*.docx;*.doc;*.pdf*.xls;*.xlsx;*.pptx;*.ppt|Text File (.txt)|*.txt|Word File (.docx ,.doc)|*.docx;*.doc|PDF (.pdf)|*.pdf|Spreadsheet (.xls ,.xlsx)|  *.xls ;*.xlsx|Presentation (.pptx ,.ppt)|*.pptx;*.ppt";
+            // saveFileDialog1.FilterIndex = 2;
+            saveFileDialog1.RestoreDirectory = true;
+            saveFileDialog1.DefaultExt = "." + GetClearExtension(pathFileSend);
+            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+
+                if ((myStream = saveFileDialog1.OpenFile()) != null)
+                {
+                    // Code to write the stream goes here.
+                    // MessageBox.Show(saveFileDialog1.FileName);
+                    myStream.Close();
+                    showSpinner(false);
+                }
+
+            }
+            else
+            {
+                showSpinner(false);
+            }
+
+
+        }
+        public static string GetClearExtension(string filePath)
+        {
+            return String.IsNullOrEmpty(filePath)
+                ? null
+                : Path.GetExtension(filePath).Substring(1).ToLower();
+        }
+        public void guardarStream(Stream stream, string destPath)
+        {
+            using (var fileStream = new FileStream(destPath, FileMode.Create, FileAccess.Write))
+            {
+                stream.CopyTo(fileStream);
+            }
         }
 
         private void btnCambiar_Click(object sender, EventArgs e)
         {
             showSpinner(false);
         }
+        //selecciona el dirrectorio del archivo 
+        private void archivoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFile = new OpenFileDialog();
+            if (openFile.ShowDialog() == DialogResult.OK)
+            {//directorio del archivo a enviar
+                pathFileSend = openFile.FileName;
+                showSpinner(true);
+                ////dataBase
+                //archivoInsert.fecha= DateTime.Now.ToString("M/d/yyyy");
+                //archivoInsert.nombre = openFile.SafeFileName;
+                //archivoInsert.ubicacion = openFile.FileName;
+                //archivoInsert.usuarios.id = usuario.id;
+                //LNArchivos.Instance.Insertar(archivoInsert);
+
+
+                //codigo para enviar por socket aqui
+
+
+                CargarDatos(usuario);
+                showSpinner(false);
+            }
+        }
+
     }
 }
