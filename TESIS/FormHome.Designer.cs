@@ -77,7 +77,7 @@
             this.ayudaToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 4);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(300, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(208, 24);
             this.menuStrip1.TabIndex = 7;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -120,7 +120,7 @@
             // 
             this.archivoToolStripMenuItem.Image = global::TESIS.Properties.Resources.folder;
             this.archivoToolStripMenuItem.Name = "archivoToolStripMenuItem";
-            this.archivoToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.archivoToolStripMenuItem.Size = new System.Drawing.Size(115, 22);
             this.archivoToolStripMenuItem.Text = "Archivo";
             this.archivoToolStripMenuItem.Click += new System.EventHandler(this.archivoToolStripMenuItem_Click);
             // 
@@ -302,7 +302,7 @@
             // 
             this.ProgresSpinnerLoad.BackColor = System.Drawing.Color.Transparent;
             this.ProgresSpinnerLoad.Image = global::TESIS.Properties.Resources.loading3;
-            this.ProgresSpinnerLoad.Location = new System.Drawing.Point(387, 162);
+            this.ProgresSpinnerLoad.Location = new System.Drawing.Point(387, 172);
             this.ProgresSpinnerLoad.Name = "ProgresSpinnerLoad";
             this.ProgresSpinnerLoad.Size = new System.Drawing.Size(100, 95);
             this.ProgresSpinnerLoad.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
