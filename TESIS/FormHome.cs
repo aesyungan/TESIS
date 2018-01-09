@@ -54,7 +54,8 @@ namespace TESIS
         public void showSpinner(bool estado)
         {
             ProgresSpinnerLoad.Visible = estado;
-
+            if (estado == false)
+                ShowDetailsBorrar();
         }
         private void acercaDeToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -91,7 +92,12 @@ namespace TESIS
             ShowDetails();
             // MessageBox.Show(archivoSelected.nombre);
         }
-
+        public void ShowDetailsBorrar()
+        {
+            lnNombre.Text = "";
+            lbFecha.Text = "";
+            lbUbicacion.Text = "";
+        }
         public void ShowDetails()
         {
             lnNombre.Text = archivoSelected.nombre;
@@ -111,44 +117,25 @@ namespace TESIS
             CargarDatos(usuario);
             activeBtnDetails(false);
             MessageBox.Show("Eliminación Correcta", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            ShowDetailsBorrar();
         }
 
         private void btnDescargar_Click(object sender, EventArgs e)
         {
             showSpinner(true);
-            //codigo para q descarge el archo del socket
+            Usuarios usuario = new Usuarios();
+            usuario.id = 3;
+            SocketApp socketApp = new SocketApp("127.0.0.1", 5656, usuario);
+            //para q actualize cuando envie todo
+            //socketApp.dataGridViewArchivos = dataGridViewArchivos;
+            //  socketApp.progresSpinnerLoad = ProgresSpinnerLoad;
 
-
-            //  byte[] dataToSend = File.ReadAllBytes(@"" + path);
-            // FileStream fileStream = new FileStream(pathFileSend, FileMode.Create, FileAccess.ReadWrite);
-             Stream myStream ;//del socket
-
-            //dialog para guardar file
-            SaveFileDialog saveFileDialog1 = new SaveFileDialog();
-            string namFile = "data.png";
-            saveFileDialog1.FileName = namFile;
-            saveFileDialog1.Filter = @"All Files|*.txt;*.docx;*.doc;*.pdf*.xls;*.xlsx;*.pptx;*.ppt|Text File (.txt)|*.txt|Word File (.docx ,.doc)|*.docx;*.doc|PDF (.pdf)|*.pdf|Spreadsheet (.xls ,.xlsx)|  *.xls ;*.xlsx|Presentation (.pptx ,.ppt)|*.pptx;*.ppt";
-            // saveFileDialog1.FilterIndex = 2;
-            saveFileDialog1.RestoreDirectory = true;
-            saveFileDialog1.DefaultExt = "." + GetClearExtension(pathFileSend);
-            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
-            {
-
-                if ((myStream = saveFileDialog1.OpenFile()) != null)
-                {
-                    // Code to write the stream goes here.
-                    // MessageBox.Show(saveFileDialog1.FileName);
-                    myStream.Close();
-                    showSpinner(false);
-                }
-
-            }
-            else
-            {
-                showSpinner(false);
-            }
-
-
+            //archivoSElect.id = 79;
+            //archivoSElect = LNArchivos.Instance.ListarId(archivoSElect);
+            //Console.WriteLine(archivoSElect.nombre);
+            socketApp.progresSpinnerLoad = ProgresSpinnerLoad;
+            socketApp.descargarArchivo(archivoSelected.nombre);
+            //activeBtnDetails(false);
         }
         public static string GetClearExtension(string filePath)
         {
@@ -166,6 +153,7 @@ namespace TESIS
 
         private void btnCambiar_Click(object sender, EventArgs e)
         {
+
             OpenFileDialog openFile = new OpenFileDialog();
             showSpinner(true);
             if (openFile.ShowDialog() == DialogResult.OK)
@@ -182,11 +170,14 @@ namespace TESIS
 
                 // CargarDatos(usuario);
                 // showSpinner(false);
+                ShowDetailsBorrar();
+                activeBtnDetails(false);
             }
             else
             {
                 showSpinner(false);
             }
+            
         }
         //selecciona el dirrectorio del archivo 
         private void archivoToolStripMenuItem_Click(object sender, EventArgs e)
@@ -195,10 +186,10 @@ namespace TESIS
             showSpinner(true);
             if (openFile.ShowDialog() == DialogResult.OK)
             {//directorio del archivo a enviar
-                
+
                 string nombreFile = CopyFile(openFile.FileName, openFile.SafeFileName);
                 Console.WriteLine(nombreFile);
-                SocketApp socketApp = new SocketApp("127.0.0.1", 5656,usuario);
+                SocketApp socketApp = new SocketApp("127.0.0.1", 5656, usuario);
                 //para q actualize cuando envie todo
                 socketApp.dataGridViewArchivos = dataGridViewArchivos;
                 socketApp.progresSpinnerLoad = ProgresSpinnerLoad;
@@ -207,6 +198,7 @@ namespace TESIS
 
                 // CargarDatos(usuario);
                 // showSpinner(false);
+                activeBtnDetails(false);
             }
             else
             {
