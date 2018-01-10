@@ -40,16 +40,27 @@ namespace TESIS
 
         public void CargarDatos(Usuarios item)
         {
-            dataGridViewArchivos.DataSource = null;
-            dataGridViewArchivos.DataSource = LNArchivos.Instance.Listar(item);
-            if (dataGridViewArchivos.Rows.Count > 0)
-            {//oculta columnas
-                dataGridViewArchivos.Columns[0].Visible = false;
-                dataGridViewArchivos.Columns[1].Visible = false;
-                dataGridViewArchivos.Columns[4].Visible = false;
+            try
+            {
+                showSpinner(true);
+                dataGridViewArchivos.DataSource = null;
+                dataGridViewArchivos.DataSource = LNArchivos.Instance.Listar(item);
+                if (dataGridViewArchivos.Rows.Count > 0)
+                {//oculta columnas
+                    dataGridViewArchivos.Columns[0].Visible = false;
+                    dataGridViewArchivos.Columns[1].Visible = false;
+                    dataGridViewArchivos.Columns[4].Visible = false;
+                }
+                // dataGridViewArchivos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
+                dataGridViewArchivos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;//100% content
+                showSpinner(false);
             }
-            // dataGridViewArchivos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
-            dataGridViewArchivos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;//100% content
+            catch (Exception ex)
+            {
+                showSpinner(false);
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+       
         }
         public void showSpinner(bool estado)
         {
@@ -113,29 +124,49 @@ namespace TESIS
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-            LNArchivos.Instance.Eliminar(archivoSelected);
-            CargarDatos(usuario);
-            activeBtnDetails(false);
-            MessageBox.Show("Eliminación Correcta", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            ShowDetailsBorrar();
+            try
+            {
+                showSpinner(true);
+                LNArchivos.Instance.Eliminar(archivoSelected);
+                CargarDatos(usuario);
+                activeBtnDetails(false);
+                MessageBox.Show("Eliminación Correcta", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                ShowDetailsBorrar();
+                showSpinner(false);
+            }
+            catch (Exception ex)
+            {
+                showSpinner(false);
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+          
         }
 
         private void btnDescargar_Click(object sender, EventArgs e)
         {
-            showSpinner(true);
-            Usuarios usuario = new Usuarios();
-            usuario.id = 3;
-            SocketApp socketApp = new SocketApp("127.0.0.1", 5656, usuario);
-            //para q actualize cuando envie todo
-            //socketApp.dataGridViewArchivos = dataGridViewArchivos;
-            //  socketApp.progresSpinnerLoad = ProgresSpinnerLoad;
+            try
+            {
+                showSpinner(true);
+                Usuarios usuario = new Usuarios();
+                usuario.id = 3;
+                SocketApp socketApp = new SocketApp("127.0.0.1", 5656, usuario);
+                //para q actualize cuando envie todo
+                //socketApp.dataGridViewArchivos = dataGridViewArchivos;
+                //  socketApp.progresSpinnerLoad = ProgresSpinnerLoad;
 
-            //archivoSElect.id = 79;
-            //archivoSElect = LNArchivos.Instance.ListarId(archivoSElect);
-            //Console.WriteLine(archivoSElect.nombre);
-            socketApp.progresSpinnerLoad = ProgresSpinnerLoad;
-            socketApp.descargarArchivo(archivoSelected.nombre);
-            //activeBtnDetails(false);
+                //archivoSElect.id = 79;
+                //archivoSElect = LNArchivos.Instance.ListarId(archivoSElect);
+                //Console.WriteLine(archivoSElect.nombre);
+                socketApp.progresSpinnerLoad = ProgresSpinnerLoad;
+                socketApp.descargarArchivo(archivoSelected.nombre);
+                //activeBtnDetails(false);
+            }
+            catch (Exception ex)
+            {
+                showSpinner(false);
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+         
         }
         public static string GetClearExtension(string filePath)
         {
@@ -153,57 +184,77 @@ namespace TESIS
 
         private void btnCambiar_Click(object sender, EventArgs e)
         {
+            try
+            {
+                OpenFileDialog openFile = new OpenFileDialog();
+                showSpinner(true);
+                if (openFile.ShowDialog() == DialogResult.OK)
+                {//directorio del archivo a enviar
 
-            OpenFileDialog openFile = new OpenFileDialog();
-            showSpinner(true);
-            if (openFile.ShowDialog() == DialogResult.OK)
-            {//directorio del archivo a enviar
+                    string nombreFile = CopyFile(openFile.FileName, openFile.SafeFileName);
+                    Console.WriteLine(nombreFile);
+                    SocketApp socketApp = new SocketApp("127.0.0.1", 5656, usuario);
+                    //para q actualize cuando envie todo
+                    socketApp.dataGridViewArchivos = dataGridViewArchivos;
+                    socketApp.progresSpinnerLoad = ProgresSpinnerLoad;
+                    socketApp.UpdateArchivo(nombreFile, archivoSelected.id);
+                    //InitSocket(nombreFile);
 
-                string nombreFile = CopyFile(openFile.FileName, openFile.SafeFileName);
-                Console.WriteLine(nombreFile);
-                SocketApp socketApp = new SocketApp("127.0.0.1", 5656, usuario);
-                //para q actualize cuando envie todo
-                socketApp.dataGridViewArchivos = dataGridViewArchivos;
-                socketApp.progresSpinnerLoad = ProgresSpinnerLoad;
-                socketApp.UpdateArchivo(nombreFile, archivoSelected.id);
-                //InitSocket(nombreFile);
-
-                // CargarDatos(usuario);
-                // showSpinner(false);
-                ShowDetailsBorrar();
-                activeBtnDetails(false);
+                    // CargarDatos(usuario);
+                    // showSpinner(false);
+                    ShowDetailsBorrar();
+                    activeBtnDetails(false);
+                }
+                else
+                {
+                    showSpinner(false);
+                }
             }
-            else
+            catch (Exception ex)
             {
                 showSpinner(false);
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+          
             
         }
         //selecciona el dirrectorio del archivo 
         private void archivoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            OpenFileDialog openFile = new OpenFileDialog();
-            showSpinner(true);
-            if (openFile.ShowDialog() == DialogResult.OK)
-            {//directorio del archivo a enviar
+            try
+            {
+                OpenFileDialog openFile = new OpenFileDialog();
+                showSpinner(true);
+                if (openFile.ShowDialog() == DialogResult.OK)
+                {//directorio del archivo a enviar
 
-                string nombreFile = CopyFile(openFile.FileName, openFile.SafeFileName);
-                Console.WriteLine(nombreFile);
-                SocketApp socketApp = new SocketApp("127.0.0.1", 5656, usuario);
-                //para q actualize cuando envie todo
-                socketApp.dataGridViewArchivos = dataGridViewArchivos;
-                socketApp.progresSpinnerLoad = ProgresSpinnerLoad;
-                socketApp.InitSocketEnviar(nombreFile, usuario.id);
-                //InitSocket(nombreFile);
+                    string nombreFile = CopyFile(openFile.FileName, openFile.SafeFileName);
+                    Console.WriteLine(nombreFile);
+                    SocketApp socketApp = new SocketApp("127.0.0.1", 5656, usuario);
+                    //para q actualize cuando envie todo
+                    socketApp.dataGridViewArchivos = dataGridViewArchivos;
+                    socketApp.progresSpinnerLoad = ProgresSpinnerLoad;
+                    socketApp.InitSocketEnviar(nombreFile, usuario.id);
+                    //InitSocket(nombreFile);
 
-                // CargarDatos(usuario);
-                // showSpinner(false);
-                activeBtnDetails(false);
+                    // CargarDatos(usuario);
+                    // showSpinner(false);
+                    activeBtnDetails(false);
+                    ShowDetailsBorrar();
+                }
+                else
+                {
+                    showSpinner(false);
+                }
             }
-            else
+            catch (Exception ex)
             {
                 showSpinner(false);
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+           
+
+
         }
         public string CopyFile(string pathOrigen, string nombreFile)
         {

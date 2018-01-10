@@ -153,14 +153,25 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="img\acerca de.PNG" />
+    <Content Include="img\banner_bottom.png" />
+    <Content Include="img\banner_top.png" />
     <Content Include="img\BIENVENIDO.PNG" />
+    <Content Include="img\cloud.gif" />
     <Content Include="img\cloud1.png" />
     <Content Include="img\cloud2.png" />
+    <Content Include="img\cloud21.png" />
+    <Content Include="img\cloud4.png" />
+    <Content Include="img\cloud_database.png" />
+    <Content Include="img\database.png" />
+    <Content Include="img\database2.png" />
     <Content Include="img\delete-button.png" />
     <Content Include="img\download.png" />
+    <Content Include="img\ecuador-ama-la-vida1.png" />
     <Content Include="img\folder %281%29.png" />
     <Content Include="img\folder.png" />
     <Content Include="img\FONDO TRANSPARENTE.png" />
+    <Content Include="img\giphy.gif" />
+    <Content Include="img\giphyData.gif" />
     <Content Include="img\home-user-icon.png" />
     <Content Include="img\home.png" />
     <Content Include="img\house.png" />
@@ -174,15 +185,19 @@
     <Content Include="img\loading.gif" />
     <Content Include="img\loading2.gif" />
     <Content Include="img\loading3.gif" />
+    <Content Include="img\login.jpg" />
     <Content Include="img\LOGIN.PNG" />
     <Content Include="img\logo registro.png" />
     <Content Include="img\LOGO RESPALDO.png" />
     <Content Include="img\logout.png" />
+    <Content Include="img\logo_registro.png" />
+    <Content Include="img\logo_respaldo.png" />
     <Content Include="img\MENSAJE.PNG" />
     <Content Include="img\person-icon-blue.png" />
     <Content Include="img\power.png" />
     <Content Include="img\principal.PNG" />
     <Content Include="img\questions-circular-button.png" />
+    <Content Include="img\Registro-Civil-Ecuador.gif" />
     <Content Include="img\send.png" />
     <Content Include="img\transferir.PNG" />
     <Content Include="img\user %281%29.png" />

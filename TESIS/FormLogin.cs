@@ -31,20 +31,31 @@ namespace TESIS
 
         private void btnLogear_Click(object sender, EventArgs e)
         {
-            Usuarios usuarios = new Usuarios();
-            usuarios.cedula = txtCedula.Text;
-            usuarios.clave = txtClave.Text;
-            usuarios = LNUsuarios.Instance.Logear(usuarios);
-            if (usuarios != null)
-            { 
-                FormHome frm =new FormHome(usuarios);
-                frm.Show();
-                this.Visible=false;
-            }
-            else
+            try
             {
-                MessageBox.Show("Cédula o Clave Incorrectos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Usuarios usuarios = new Usuarios();
+                usuarios.cedula = txtCedula.Text;
+                usuarios.clave = txtClave.Text;
+                usuarios = LNUsuarios.Instance.Logear(usuarios);
+                if (usuarios != null)
+                {
+                    FormHome frm = new FormHome(usuarios);
+                    frm.Show();
+                    this.Visible = false;
+                }
+                else
+                {
+                    MessageBox.Show("Cédula o Clave Incorrectos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+          
+
+
         }
         //salir
         private void salirToolStripMenuItem_Click(object sender, EventArgs e)
