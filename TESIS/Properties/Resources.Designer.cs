@@ -363,6 +363,26 @@ namespace TESIS.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap LATERAL_INFERIOR2 {
+            get {
+                object obj = ResourceManager.GetObject("LATERAL_INFERIOR2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap LATERAL_SUPERIOR2 {
+            get {
+                object obj = ResourceManager.GetObject("LATERAL_SUPERIOR2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap LATERALSUPERIOR {
             get {
                 object obj = ResourceManager.GetObject("LATERALSUPERIOR", resourceCulture);
@@ -466,6 +486,16 @@ namespace TESIS.Properties {
         internal static System.Drawing.Bitmap MENSAJE1 {
             get {
                 object obj = ResourceManager.GetObject("MENSAJE1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap MENSAJE22 {
+            get {
+                object obj = ResourceManager.GetObject("MENSAJE22", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

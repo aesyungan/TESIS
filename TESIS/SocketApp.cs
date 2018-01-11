@@ -280,6 +280,7 @@ namespace LN
             //carga DB
             CargarDatos();
             progresSpinnerLoad.Visible = false;
+            MessageBox.Show("Ingreso Correcto", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         public void descargarArchivo(String filename,string ubicacionSave)

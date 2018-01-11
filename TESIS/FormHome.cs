@@ -131,7 +131,7 @@ namespace TESIS
             try
             {
                 var confirmResult = MessageBox.Show("Esta seguro de Eliminar ?",
-                                     "Confirmar Eliminación!!",
+                                     "Confirmar Eliminación!",
                                      MessageBoxButtons.YesNo);
                 if (confirmResult == DialogResult.Yes)
                 {

@@ -57,25 +57,16 @@
             this.lbUserName = new MetroFramework.Controls.MetroLabel();
             this.ProgresSpinnerLoad = new System.Windows.Forms.PictureBox();
             this.lNArchivosBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.metroLabel6 = new MetroFramework.Controls.MetroLabel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.pictureBox7 = new System.Windows.Forms.PictureBox();
-            this.metroLabel7 = new MetroFramework.Controls.MetroLabel();
-            this.metroLabel8 = new MetroFramework.Controls.MetroLabel();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewArchivos)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ProgresSpinnerLoad)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lNArchivosBindingSource)).BeginInit();
-            this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -334,7 +325,7 @@
             // 
             this.ProgresSpinnerLoad.BackColor = System.Drawing.Color.Transparent;
             this.ProgresSpinnerLoad.Image = global::TESIS.Properties.Resources.loading3;
-            this.ProgresSpinnerLoad.Location = new System.Drawing.Point(376, 174);
+            this.ProgresSpinnerLoad.Location = new System.Drawing.Point(162, 174);
             this.ProgresSpinnerLoad.Name = "ProgresSpinnerLoad";
             this.ProgresSpinnerLoad.Size = new System.Drawing.Size(100, 95);
             this.ProgresSpinnerLoad.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -345,87 +336,25 @@
             // 
             this.lNArchivosBindingSource.DataSource = typeof(LN.LNArchivos);
             // 
-            // panel2
+            // pictureBox6
             // 
-            this.panel2.Controls.Add(this.metroLabel6);
-            this.panel2.Controls.Add(this.pictureBox1);
-            this.panel2.Location = new System.Drawing.Point(0, 419);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(889, 47);
-            this.panel2.TabIndex = 13;
-            // 
-            // metroLabel6
-            // 
-            this.metroLabel6.AutoSize = true;
-            this.metroLabel6.FontSize = MetroFramework.MetroLabelSize.Small;
-            this.metroLabel6.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.metroLabel6.Location = new System.Drawing.Point(389, 20);
-            this.metroLabel6.Name = "metroLabel6";
-            this.metroLabel6.Size = new System.Drawing.Size(497, 15);
-            this.metroLabel6.TabIndex = 1;
-            this.metroLabel6.Text = "Copyright © 2017-DIRECIÓN GENERAL DE REGISTRO CIVIL, IDENTIFICACIÓN Y CEDULACIÓN";
+            this.pictureBox6.Image = global::TESIS.Properties.Resources.LATERAL_SUPERIOR2;
+            this.pictureBox6.Location = new System.Drawing.Point(0, 31);
+            this.pictureBox6.Name = "pictureBox6";
+            this.pictureBox6.Size = new System.Drawing.Size(889, 50);
+            this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox6.TabIndex = 9;
+            this.pictureBox6.TabStop = false;
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::TESIS.Properties.Resources.ecuador_ama_la_vida1;
-            this.pictureBox1.Location = new System.Drawing.Point(3, 3);
+            this.pictureBox1.Image = global::TESIS.Properties.Resources.LATERAL_INFERIOR2;
+            this.pictureBox1.Location = new System.Drawing.Point(0, 414);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(138, 41);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.Size = new System.Drawing.Size(889, 50);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 13;
             this.pictureBox1.TabStop = false;
-            // 
-            // panel3
-            // 
-            this.panel3.Controls.Add(this.pictureBox7);
-            this.panel3.Controls.Add(this.metroLabel7);
-            this.panel3.Controls.Add(this.metroLabel8);
-            this.panel3.Controls.Add(this.pictureBox6);
-            this.panel3.Location = new System.Drawing.Point(0, 31);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(889, 47);
-            this.panel3.TabIndex = 7;
-            // 
-            // pictureBox7
-            // 
-            this.pictureBox7.Image = global::TESIS.Properties.Resources.cloud1;
-            this.pictureBox7.Location = new System.Drawing.Point(802, 0);
-            this.pictureBox7.Name = "pictureBox7";
-            this.pictureBox7.Size = new System.Drawing.Size(83, 47);
-            this.pictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox7.TabIndex = 3;
-            this.pictureBox7.TabStop = false;
-            // 
-            // metroLabel7
-            // 
-            this.metroLabel7.AutoSize = true;
-            this.metroLabel7.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.metroLabel7.Location = new System.Drawing.Point(721, 3);
-            this.metroLabel7.Name = "metroLabel7";
-            this.metroLabel7.Size = new System.Drawing.Size(75, 19);
-            this.metroLabel7.TabIndex = 2;
-            this.metroLabel7.Text = "Sistema de";
-            // 
-            // metroLabel8
-            // 
-            this.metroLabel8.AutoSize = true;
-            this.metroLabel8.FontSize = MetroFramework.MetroLabelSize.Tall;
-            this.metroLabel8.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.metroLabel8.Location = new System.Drawing.Point(703, 19);
-            this.metroLabel8.Name = "metroLabel8";
-            this.metroLabel8.Size = new System.Drawing.Size(93, 25);
-            this.metroLabel8.TabIndex = 1;
-            this.metroLabel8.Text = "Respaldos";
-            // 
-            // pictureBox6
-            // 
-            this.pictureBox6.Image = global::TESIS.Properties.Resources.Registro_Civil_Ecuador;
-            this.pictureBox6.Location = new System.Drawing.Point(3, 3);
-            this.pictureBox6.Name = "pictureBox6";
-            this.pictureBox6.Size = new System.Drawing.Size(135, 44);
-            this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox6.TabIndex = 0;
-            this.pictureBox6.TabStop = false;
             // 
             // FormHome
             // 
@@ -433,8 +362,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(888, 487);
-            this.Controls.Add(this.panel3);
-            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.pictureBox6);
             this.Controls.Add(this.ProgresSpinnerLoad);
             this.Controls.Add(this.lbUserName);
             this.Controls.Add(this.metroLabel5);
@@ -453,13 +382,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ProgresSpinnerLoad)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lNArchivosBindingSource)).EndInit();
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -492,15 +416,9 @@
         private MetroFramework.Controls.MetroLabel metroLabel5;
         private MetroFramework.Controls.MetroLabel lbUserName;
         private System.Windows.Forms.PictureBox ProgresSpinnerLoad;
-        private System.Windows.Forms.Panel panel2;
-        private MetroFramework.Controls.MetroLabel metroLabel6;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.PictureBox pictureBox7;
-        private MetroFramework.Controls.MetroLabel metroLabel7;
-        private MetroFramework.Controls.MetroLabel metroLabel8;
-        private System.Windows.Forms.PictureBox pictureBox6;
         private System.Windows.Forms.Button btnUbicacion;
         private System.Windows.Forms.Label lbubica;
+        private System.Windows.Forms.PictureBox pictureBox6;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

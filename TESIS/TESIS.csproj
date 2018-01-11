@@ -181,6 +181,8 @@
     <Content Include="img\key %282%29.png" />
     <Content Include="img\key.png" />
     <Content Include="img\LATERAL INFERIOR.PNG" />
+    <Content Include="img\LATERAL INFERIOR2.PNG" />
+    <Content Include="img\LATERAL SUPERIOR2.PNG" />
     <Content Include="img\LATERALSUPERIOR.PNG" />
     <Content Include="img\loading.gif" />
     <Content Include="img\loading2.gif" />
@@ -193,6 +195,7 @@
     <Content Include="img\logo_registro.png" />
     <Content Include="img\logo_respaldo.png" />
     <Content Include="img\MENSAJE.PNG" />
+    <Content Include="img\MENSAJE22.PNG" />
     <Content Include="img\person-icon-blue.png" />
     <Content Include="img\power.png" />
     <Content Include="img\principal.PNG" />
