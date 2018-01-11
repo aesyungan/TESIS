@@ -282,7 +282,7 @@ namespace LN
             progresSpinnerLoad.Visible = false;
         }
 
-        public void descargarArchivo(String filename)
+        public void descargarArchivo(String filename,string ubicacionSave)
         {
             String p;
             long sz;
@@ -415,7 +415,8 @@ namespace LN
             sock.Send(Encoding.ASCII.GetBytes("recibido tamano"));
 
 
-            var output = File.Create("descargados/"  + filename);
+           // var output = File.Create("descargados/"  + filename);
+            var output = File.Create(ubicacionSave +"/"+ filename);
 
             Console.WriteLine("Recibiendo criptograma");
             buffer = new byte[8192];
@@ -448,11 +449,12 @@ namespace LN
             //finaliza tiempo de descrifrado
             stopwatch2.Stop();
 
-            showNotification("Download\n ","Descarga Correcta\n"+"Guardado en :\n"+ System.Windows.Forms.Application.StartupPath+ "\\descargados\\" + filename);
+            showNotification("Download\n ","Descarga Correcta\n"+"Guardado en :\n"+ ubicacionSave+ "\\" + filename);
             progresSpinnerLoad.Visible = false;
             sock.Close();
             sock = null;
             Console.WriteLine("Proceso concluido");
+            MessageBox.Show("Descarga Correcta", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
         public void showNotification(string title,string content)
         {

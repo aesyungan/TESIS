@@ -15,7 +15,8 @@ namespace TESIS
 {
     public partial class FormHome : MetroFramework.Forms.MetroForm
     {
-        string hostServidor= Properties.Settings.Default.HostServer;
+        string ubicacionSave = "";
+        string hostServidor = Properties.Settings.Default.HostServer;
         public Usuarios usuario { get; set; }
         public Archivos archivoSelected = new Archivos();
         public Archivos archivoInsert = new Archivos();
@@ -25,6 +26,8 @@ namespace TESIS
         public FormHome(Usuarios usuarios)
         {
             InitializeComponent();
+            ubicacionSave = System.Windows.Forms.Application.StartupPath + "\\descargados";
+            lbubica.Text = ubicacionSave;
             usuario = usuarios;
             // MessageBox.Show(usuario.nombre);
             CargarDatos(usuario);
@@ -61,7 +64,7 @@ namespace TESIS
                 showSpinner(false);
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-       
+
         }
         public void showSpinner(bool estado)
         {
@@ -127,20 +130,32 @@ namespace TESIS
         {
             try
             {
-                showSpinner(true);
-                LNArchivos.Instance.Eliminar(archivoSelected);
-                CargarDatos(usuario);
-                activeBtnDetails(false);
-                MessageBox.Show("Eliminación Correcta", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                ShowDetailsBorrar();
-                showSpinner(false);
+                var confirmResult = MessageBox.Show("Esta seguro de Eliminar ?",
+                                     "Confirmar Eliminación!!",
+                                     MessageBoxButtons.YesNo);
+                if (confirmResult == DialogResult.Yes)
+                {
+                    // If 'Yes', do something here.
+                    showSpinner(true);
+                    LNArchivos.Instance.Eliminar(archivoSelected);
+                    CargarDatos(usuario);
+                    activeBtnDetails(false);
+                    MessageBox.Show("Eliminación Correcta", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    ShowDetailsBorrar();
+                    showSpinner(false);
+                }
+                else
+                {
+                    // If 'No', do something here.
+                }
+
             }
             catch (Exception ex)
             {
                 showSpinner(false);
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-          
+
         }
 
         private void btnDescargar_Click(object sender, EventArgs e)
@@ -159,7 +174,7 @@ namespace TESIS
                 //archivoSElect = LNArchivos.Instance.ListarId(archivoSElect);
                 //Console.WriteLine(archivoSElect.nombre);
                 socketApp.progresSpinnerLoad = ProgresSpinnerLoad;
-                socketApp.descargarArchivo(archivoSelected.nombre);
+                socketApp.descargarArchivo(archivoSelected.nombre,ubicacionSave);
                 //activeBtnDetails(false);
             }
             catch (Exception ex)
@@ -167,7 +182,7 @@ namespace TESIS
                 showSpinner(false);
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-         
+
         }
         public static string GetClearExtension(string filePath)
         {
@@ -216,8 +231,8 @@ namespace TESIS
                 showSpinner(false);
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-          
-            
+
+
         }
         //selecciona el dirrectorio del archivo 
         private void archivoToolStripMenuItem_Click(object sender, EventArgs e)
@@ -253,7 +268,7 @@ namespace TESIS
                 showSpinner(false);
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-           
+
 
 
         }
@@ -268,5 +283,17 @@ namespace TESIS
             return nombreFile;
         }
 
+        private void btnUbicacion_Click(object sender, EventArgs e)
+        {
+            
+            FolderBrowserDialog folderBrowserDialog1 = new FolderBrowserDialog();
+            if (folderBrowserDialog1.ShowDialog() == DialogResult.OK)
+            {
+                ubicacionSave = folderBrowserDialog1.SelectedPath;
+                lbubica.Text = ubicacionSave;
+
+            }
+
+        }
     }
 }

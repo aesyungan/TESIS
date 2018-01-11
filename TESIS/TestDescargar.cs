@@ -31,7 +31,7 @@ namespace TESIS
             archivoSElect.id = 79;
             archivoSElect = LNArchivos.Instance.ListarId(archivoSElect);
             //Console.WriteLine(archivoSElect.nombre);
-            socketApp.descargarArchivo(archivoSElect.nombre);
+           // socketApp.descargarArchivo(archivoSElect.nombre);
         }
     }
 }
