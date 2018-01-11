@@ -15,6 +15,7 @@ namespace TESIS
 {
     public partial class FormHome : MetroFramework.Forms.MetroForm
     {
+        string hostServidor= Properties.Settings.Default.HostServer;
         public Usuarios usuario { get; set; }
         public Archivos archivoSelected = new Archivos();
         public Archivos archivoInsert = new Archivos();
@@ -149,7 +150,7 @@ namespace TESIS
                 showSpinner(true);
                 Usuarios usuario = new Usuarios();
                 usuario.id = 3;
-                SocketApp socketApp = new SocketApp("127.0.0.1", 5656, usuario);
+                SocketApp socketApp = new SocketApp(hostServidor, 5656, usuario);
                 //para q actualize cuando envie todo
                 //socketApp.dataGridViewArchivos = dataGridViewArchivos;
                 //  socketApp.progresSpinnerLoad = ProgresSpinnerLoad;
@@ -193,7 +194,7 @@ namespace TESIS
 
                     string nombreFile = CopyFile(openFile.FileName, openFile.SafeFileName);
                     Console.WriteLine(nombreFile);
-                    SocketApp socketApp = new SocketApp("127.0.0.1", 5656, usuario);
+                    SocketApp socketApp = new SocketApp(hostServidor, 5656, usuario);
                     //para q actualize cuando envie todo
                     socketApp.dataGridViewArchivos = dataGridViewArchivos;
                     socketApp.progresSpinnerLoad = ProgresSpinnerLoad;
@@ -230,7 +231,7 @@ namespace TESIS
 
                     string nombreFile = CopyFile(openFile.FileName, openFile.SafeFileName);
                     Console.WriteLine(nombreFile);
-                    SocketApp socketApp = new SocketApp("127.0.0.1", 5656, usuario);
+                    SocketApp socketApp = new SocketApp(hostServidor, 5656, usuario);
                     //para q actualize cuando envie todo
                     socketApp.dataGridViewArchivos = dataGridViewArchivos;
                     socketApp.progresSpinnerLoad = ProgresSpinnerLoad;
