@@ -689,7 +689,20 @@ namespace LN
         public void CargarDatos()
         {
             dataGridViewArchivos.DataSource = null;
-            dataGridViewArchivos.DataSource = LNArchivos.Instance.Listar(usuario);
+            List<Archivos> lst = new List<Archivos>();
+            //lst = LNArchivos.Instance.Listar(usuario);
+            foreach (Archivos it in LNArchivos.Instance.Listar(usuario))
+            {
+                //delimitador es __
+                string[] data = it.nombre.Split("__".ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
+                if (data.Length >= 2)
+                {
+                    it.nombre = data[1];
+                }
+
+                lst.Add(it);
+            }
+            dataGridViewArchivos.DataSource = lst;
             if (dataGridViewArchivos.Rows.Count > 0)
             {//oculta columnas
                 dataGridViewArchivos.Columns[0].Visible = false;

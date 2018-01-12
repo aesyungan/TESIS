@@ -48,7 +48,22 @@ namespace TESIS
             {
                 showSpinner(true);
                 dataGridViewArchivos.DataSource = null;
-                dataGridViewArchivos.DataSource = LNArchivos.Instance.Listar(item);
+                //optiene solo el nombre
+                List<Archivos> lst = new List<Archivos>();
+                //lst = LNArchivos.Instance.Listar(item);
+                foreach (Archivos it in LNArchivos.Instance.Listar(item))
+                {
+                    //delimitador es __
+                    string[] data = it.nombre.Split("__".ToCharArray(),StringSplitOptions.RemoveEmptyEntries);
+                    if (data.Length >= 2)
+                    {
+                        it.nombre = data[1];
+                    }
+                    
+                    lst.Add(it);
+                }
+
+                dataGridViewArchivos.DataSource =lst;
                 if (dataGridViewArchivos.Rows.Count > 0)
                 {//oculta columnas
                     dataGridViewArchivos.Columns[0].Visible = false;
@@ -276,7 +291,7 @@ namespace TESIS
         {
             string pathProyect = Directory.GetCurrentDirectory();
             long milliseconds = DateTimeOffset.Now.ToUnixTimeMilliseconds();
-            nombreFile = milliseconds.ToString() + nombreFile;
+            nombreFile = milliseconds.ToString()+"__" + nombreFile;
             //Console.WriteLine(milliseconds.ToString());
             pathProyect = pathProyect + "\\envios\\planos-medianos\\" + nombreFile;
             File.Copy(@"" + pathOrigen, @"" + pathProyect);

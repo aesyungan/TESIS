@@ -213,6 +213,16 @@ namespace TESIS.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap ecu {
+            get {
+                object obj = ResourceManager.GetObject("ecu", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap ecuador_ama_la_vida1 {
             get {
                 object obj = ResourceManager.GetObject("ecuador_ama_la_vida1", resourceCulture);

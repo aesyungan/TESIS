@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormHome));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.inicioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cerrarSessiónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -226,10 +227,10 @@
             // 
             // pictureBox2
             // 
-            this.pictureBox2.Image = global::TESIS.Properties.Resources.cloud2;
+            this.pictureBox2.Image = global::TESIS.Properties.Resources.LOGO_RESPALDO;
             this.pictureBox2.Location = new System.Drawing.Point(126, 145);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(126, 95);
+            this.pictureBox2.Size = new System.Drawing.Size(154, 95);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox2.TabIndex = 7;
             this.pictureBox2.TabStop = false;
@@ -370,6 +371,7 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.dataGridViewArchivos);
             this.Controls.Add(this.menuStrip1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "FormHome";
             this.Resizable = false;
